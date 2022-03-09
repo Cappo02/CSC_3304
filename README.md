@@ -1,3 +1,3 @@
 # CSC3304
 
-Test edit made from classes server
+Repo for CSC 3304 class for Spring 2022

@@ -70,9 +70,6 @@ char vin[], int* numDoors, char numDoorsString[], char rearConfig[]) {
 	InputString(inFile, vin, maxLength);
 	*numDoors = InputInteger(inFile, numDoorsString, maxLength);
 	InputString(inFile, rearConfig, maxLength);
-	
-	// free(yearString);
-	// free(numDoorsString);
 
 }
 
@@ -86,9 +83,6 @@ char vin[], int* numDoors, char numDoorsString[], double* towCap, char towCapStr
 	*numDoors = InputInteger(inFile, numDoorsString, maxLength);
 	*towCap = InputFloat(inFile, towCapString, maxLength);
 
-	// free(yearString);
-	// free(numDoorsString);
-	// free(towCapString);
 
 }
 
@@ -100,8 +94,6 @@ char vin[], char motorType[]) {
 	*year = InputInteger(inFile, yearString, maxLength);
 	InputString(inFile, vin, maxLength);
 	InputString(inFile, motorType, maxLength);
-
-	// free(yearString);
 
 }
 

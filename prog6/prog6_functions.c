@@ -2,7 +2,7 @@
  * Implementation of "prog6_functions.h" functions
  * 
  * @author Nicholas Caplette
- * @since 3/29/22
+ * @since 4/29/22
  */
 
 #include <stdio.h>
@@ -71,6 +71,14 @@ char vin[], int* numDoors, char numDoorsString[], char rearConfig[]) {
 	*numDoors = InputInteger(inFile, numDoorsString, maxLength);
 	InputString(inFile, rearConfig, maxLength);
 
+	//Reallocs all strings that were inputted.
+	make = (char *)realloc(make, strlen(make));
+	model = (char *)realloc(model, strlen(model));
+	yearString = (char *)realloc(yearString, strlen(yearString));
+	vin = (char *)realloc(vin, strlen(vin));
+	numDoorsString = (char *)realloc(numDoorsString, strlen(numDoorsString));
+	rearConfig = (char *)realloc(rearConfig, strlen(rearConfig));
+
 }
 
 void InputTruck(FILE* inFile, int maxLength, char make[], char model[], int* year, char yearString[],
@@ -83,6 +91,13 @@ char vin[], int* numDoors, char numDoorsString[], double* towCap, char towCapStr
 	*numDoors = InputInteger(inFile, numDoorsString, maxLength);
 	*towCap = InputFloat(inFile, towCapString, maxLength);
 
+	//Reallocs all strings that were inputted.
+	make = (char *)realloc(make, strlen(make));
+	model = (char *)realloc(model, strlen(model));
+	yearString = (char *)realloc(yearString, strlen(yearString));
+	vin = (char *)realloc(vin, strlen(vin));
+	numDoorsString = (char *)realloc(numDoorsString, strlen(numDoorsString));
+	towCapString = (char *)realloc(towCapString, strlen(towCapString));
 
 }
 
@@ -94,6 +109,13 @@ char vin[], char motorType[]) {
 	*year = InputInteger(inFile, yearString, maxLength);
 	InputString(inFile, vin, maxLength);
 	InputString(inFile, motorType, maxLength);
+
+	//Reallocs all strings that were inputted.
+	make = (char *)realloc(make, strlen(make));
+	model = (char *)realloc(model, strlen(model));
+	yearString = (char *)realloc(yearString, strlen(yearString));
+	vin = (char *)realloc(vin, strlen(vin));
+	motorType = (char *)realloc(motorType, strlen(motorType));
 
 }
 

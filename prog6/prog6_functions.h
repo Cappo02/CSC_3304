@@ -6,38 +6,54 @@
 #define MAX_LENGTH 51
 #define MAX_VEHICLES 500
 
+/**
+ * Structure used to store specific information needed for a car.
+ * 
+ * @author Nicholas Caplette
+ * @since 4/29/22
+ */
 typedef struct Car_ {
 
-	char make[MAX_LENGTH];
-	char model[MAX_LENGTH];
-	char vin[MAX_LENGTH];
-	char numDoorsString[MAX_LENGTH];
+	char *numDoorsString;
 	int numDoors;
-	char rearConfig[MAX_LENGTH];
+	char *rearConfig;
 
 } Car;
 
+/**
+ * Structure used to store specific information needed for a truck.
+ * 
+ * @author Nicholas Caplette
+ * @since 4/29/22
+ */
 typedef struct Truck_ {
 
-	char make[MAX_LENGTH];
-	char model[MAX_LENGTH];
-	char vin[MAX_LENGTH];
-	char numDoorsString[MAX_LENGTH];
+	char *numDoorsString;
 	int numDoors;
-	char towCapString[MAX_LENGTH];
+	char *towCapString;
 	double towCap;
 
 } Truck;
 
+/**
+ * Structure used to store specific information needed for a boat.
+ * 
+ * @author Nicholas Caplette
+ * @since 4/29/22
+ */
 typedef struct Boat_ {
 
-	char make[MAX_LENGTH];
-	char model[MAX_LENGTH];
-	char vin[MAX_LENGTH];
-	char motorType[MAX_LENGTH];
+	char *motorType;
 
 } Boat;
 
+/**
+ * Structure used to store general information that is needed for each specific vehicle.
+ * Also contains union of all the specific vehicle structures.
+ * 
+ * @author Nicholas Caplette
+ * @since 4/29/22
+ */
 typedef struct VehicleTypes_ {
 
 	union Vehicles_ {
@@ -48,7 +64,10 @@ typedef struct VehicleTypes_ {
 
 	} Vehicles;
 
-    char yearString[MAX_LENGTH];
+    char *yearString;
+	char *make;
+	char *model;
+	char *vin;
 	int year;
 	int type;
 
@@ -66,7 +85,7 @@ typedef struct VehicleTypes_ {
  * char givenString[] - the string to remove the whitespace from
  * 
  * @author Nicholas Caplette
- * @since 3/29/22
+ * @since 4/29/22
  */
 int RemoveEndingWhiteSpace(char givenString[]);
 
@@ -85,7 +104,7 @@ int RemoveEndingWhiteSpace(char givenString[]);
  * int maxLength - the maximum length of the string
  * 
  * @author Nicholas Caplette
- * @since 3/29/22
+ * @since 4/29/22
  */
 int InputInteger(FILE* inFile, char inIntString[], int maxLength);
 
@@ -123,7 +142,7 @@ float InputFloat(FILE* inFile, char inFloatString[], int maxLength);
  * int maxLength - the maximum length of the string
  * 
  * @author Nicholas Caplette
- * @since 3/29/22
+ * @since 4/29/22
  */
 void InputString(FILE* inFile, char inString[], int maxLength);
 
@@ -152,7 +171,7 @@ void InputString(FILE* inFile, char inString[], int maxLength);
  * char rearConfig[] - the string to store the car's rear configuration in
  * 
  * @author Nicholas Caplette
- * @since 3/29/22
+ * @since 4/29/22
  */
 void InputCar(FILE* inFile, int maxLength, char make[], char model[], int* year, char yearString[],
 char vin[], int* numDoors, char numDoorsString[], char rearConfig[]);
@@ -182,7 +201,7 @@ char vin[], int* numDoors, char numDoorsString[], char rearConfig[]);
  * char towCapString[] - the string to store the truck's towing capacity in
  * 
  * @author Nicholas Caplette
- * @since 3/29/22
+ * @since 4/29/22
  */
 void InputTruck(FILE* inFile, int maxLength, char make[], char model[], int* year, char yearString[],
 char vin[], int* numDoors, char numDoorsString[], double* towCap, char towCapString[]);
@@ -209,7 +228,7 @@ char vin[], int* numDoors, char numDoorsString[], double* towCap, char towCapStr
  * char motorType[] - the string to store the boat's motor type in
  * 
  * @author Nicholas Caplette
- * @since 3/29/22
+ * @since 4/29/22
  */
 void InputBoat(FILE* inFile, int maxLength, char make[], char model[], int* year, char yearString[], 
 char vin[], char motorType[]);
@@ -234,7 +253,7 @@ char vin[], char motorType[]);
  * char rearConfig[] - the string containing the car's rear configuration
  * 
  * @author Nicholas Caplette
- * @since 3/29/22
+ * @since 4/29/22
  */
 void OutputCar(FILE* outFile, char make[], char model[], int year, char vin[], int numDoors, char rearConfig[]);
 
@@ -258,7 +277,7 @@ void OutputCar(FILE* outFile, char make[], char model[], int year, char vin[], i
  * double towCap - the double containing the truck's towing capacity
  * 
  * @author Nicholas Caplette
- * @since 3/29/22
+ * @since 4/29/22
  */
 void OutputTruck(FILE* outFile, char make[], char model[], int year, char vin[], int numDoors, double towCap);
 
@@ -280,10 +299,38 @@ void OutputTruck(FILE* outFile, char make[], char model[], int year, char vin[],
  * char motorType[] - the string containing the boat's motor type
  * 
  * @author Nicholas Caplette
- * @since 3/29/22
+ * @since 4/29/22
  */
 void OutputBoat(FILE* outFile, char make[], char model[], int year, char vin[], char motorType[]);
 
+/**
+ * This function swaps the pointers of two given vehicle pointers. 
+ * 
+ * routine: Swap
+ * 
+ * return type: void
+ * 
+ * parameters:
+ * VehicleTypes *veh1 - the first pointer to swap
+ * VehicleTypes *veh2 - the second pointer to swap
+ * 
+ * @author Nicholas Caplette
+ * @since 4/29/22
+ */
 void swap(VehicleTypes *veh1, VehicleTypes *veh2);
 
+/**
+ * This function sorts the given array of vehicles by year in ascending order.
+ * 
+ * routine: bubbleSort
+ * 
+ * return type: void
+ * 
+ * parameters:
+ * VehicleTypes **vehList - the array of vehicles to sort
+ * int vehListLen - the number of vehicles in the array
+ * 
+ * @author Nicholas Caplette
+ * @since 4/29/22
+ */
 void bubbleSort(VehicleTypes **vehList, int vehListLen);
